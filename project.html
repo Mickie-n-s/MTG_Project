@@ -1,57 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Recommending Card Substitutions Based on Tournament Meta</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-
+<html>
 <body>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 jumbotron text-center">
-        <h1>Recommending Card Substitutions Based on Tournament Meta</h1>
-        <p>Choose your cards from the dropdown menu and click "Add" to add them.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-5">
-        <div class="well">
-          <h5>Cards</h5>
-          <!-- <select id="selDataset"></select> -->
-          <select id="selDataset"></select>
-          <button type="button" btn="btn-primary" onclick="addCard()">Add Card</button>
-        </div>
-        
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Your Deck</h3>
-          </div>
-          <div id="cardList" class="panel-body"></div>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div id="bar"></div>
-      </div>
-      <div class="col-md-5">
-        <div id="gauge"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="bubble"></div>
-      </div>
-    </div>
-  </div>
+<h2>Make a table based on the value of a drop down menu.</h2>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="cards.js"></script>
+<!-- <select id="myselect" onchange="change_myselect(this.value)"> -->
+
+ <h3>Select A Card</h3>
+<select id="selectCard" >
+   <script>
+fetch("./temp2.json").then(function(resp){
+    return resp.json();
+}).then(function(data){
+
+
+    var increment= 0; 
+    var till = 13693; 
+    var options ="";
+    var option2=""; 
+
+    for(var y=increment; y<= till; y++){
+      
+      options += "<option>"+data.index[y]+"</option>"; 
+    } 
+    
+    document.getElementById("selectCard").innerHTML=options;
+    // document.getElementById("displayInfo").innerHTML=option2; 
+  
+})
+  </script>
+ 
+</select>
+</select>
+<p id="demo"></p>
+
+ <div id="displayInfo"></div> 
+<h2>About The Card</h2>
+
+<script>
+  fetch("./temp2.json").then(function(resp){
+    return resp.json();
+}).then(function(data){
+
+  var increment= 0; 
+    var till = 13693; 
+    var options ="";
+    var option2="";
+    console.log(data.data[0]); 
+    for(var i = 0; i<= till; i ++){
+      for(var j = 0; j<4; j ++){
+       
+        option2 += "<h3>"+data.data[i][j]+"</h3>"; 
+        document.getElementById("displayInfo").innerHTML=option2;
+
+      }
+    }
+
+     
+    
+
+});
+
+
+</script>
+
+
 
 </body>
-
 </html>
