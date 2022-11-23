@@ -6,12 +6,15 @@ let cardListFive = []
 let cardListSix = []
 let cardListSeven = []
 
+
+
 function init() {
 
   var selector = d3.select("#selDataset");
 
 
   d3.json("modern_card_names.json").then((data) => {
+
     var cardNames = data.data;
 
     cardNames.forEach((card) => {
@@ -281,9 +284,159 @@ Object.entries(cardListSeven).forEach(([key, value]) => {
 
 
 
+function deckListMaker() {
+  let deckList = []
+  var deck = d3.select("#deckList")
+  deck.html("")
+  d3.json("modern_deck_links.json").then(function (data) {
+    var deckListList = Object.entries(data.combined)
 
 
+    for (const [key,value] of deckListList){
+      const result = cardList.every(val => value.includes(val));
+      if (result == true) {
+        deckList.push(key)
+        ;}
+    }
+    console.log(deckList)
 
 
+    Object.entries(deckList).forEach(([key, value]) => {
+      deck.append("h6").text(`${key.toUpperCase()}: ${value}`);
+
+  })})};
+
+function deckListMakerTwo() {
+  let deckListTwo = []
+  var deckTwo = d3.select("#deckListTwo")
+  deckTwo.html("")
+  d3.json("standard_deck_links.json").then(function (data) {
+    var deckListListTwo = Object.entries(data.combined)
 
 
+    for (const [key,value] of deckListListTwo){
+      const result = cardListTwo.every(val => value.includes(val));
+      if (result == true) {
+        deckListTwo.push(key)
+        ;}
+    }
+    console.log(deckListTwo)
+
+
+    Object.entries(deckListTwo).forEach(([key, value]) => {
+      deckTwo.append("h6").text(`${key.toUpperCase()}: ${value}`);
+
+  })})};
+
+
+function deckListMakerThree() {
+  let deckListThree = []
+  var deckThree = d3.select("#deckListThree")
+  deckThree.html("")
+  d3.json("historic_deck_links.json").then(function (data) {
+    var deckListListThree = Object.entries(data.combined)
+
+
+    for (const [key,value] of deckListListThree){
+      const result = cardListThree.every(val => value.includes(val));
+      if (result == true) {
+        deckListThree.push(key)
+        ;}
+    }
+    console.log(deckListThree)
+
+
+    Object.entries(deckListThree).forEach(([key, value]) => {
+      deckThree.append("h6").text(`${key.toUpperCase()}: ${value}`);
+
+  })})}; 
+  
+  
+function deckListMakerFour() {
+  let deckListFour = []
+  var deckFour = d3.select("#deckListFour")
+  deckFour.html("")
+  d3.json("legacy_deck_links.json").then(function (data) {
+    var deckListListFour = Object.entries(data.combined)
+
+
+    for (const [key,value] of deckListListFour){
+      const result = cardListFour.every(val => value.includes(val));
+      if (result == true) {
+        deckListFour.push(key)
+        ;}
+    }
+    console.log(deckListFour)
+
+
+    Object.entries(deckListFour).forEach(([key, value]) => {
+      deckFour.append("h6").text(`${key.toUpperCase()}: ${value}`);
+
+  })})};
+
+
+function deckListMakerFive() {
+  let deckListFive = []
+  var deckFive = d3.select("#deckListFive")
+  deckFive.html("")
+  d3.json("pauper_deck_links.json").then(function (data) {
+    var deckListListFive = Object.entries(data.combined)
+
+
+    for (const [key,value] of deckListListFive){
+      const result = cardListFive.every(val => value.includes(val));
+      if (result == true) {
+        deckListFive.push(key)
+        ;}
+    }
+    console.log(deckListFive)
+
+
+    Object.entries(deckListFive).forEach(([key, value]) => {
+      deckFive.append("h6").text(`${key.toUpperCase()}: ${value}`);
+
+  })})};
+
+function deckListMakerSix() {
+  let deckListSix = []
+  var deckSix = d3.select("#deckListSix")
+  deckSix.html("")
+  d3.json("pioneer_deck_links.json").then(function (data) {
+    var deckListListSix = Object.entries(data.combined)
+
+
+    for (const [key,value] of deckListListSix){
+      const result = cardListSix.every(val => value.includes(val));
+      if (result == true) {
+        deckListSix.push(key)
+        ;}
+    }
+    console.log(deckListSix)
+
+
+    Object.entries(deckListSix).forEach(([key, value]) => {
+      deckSix.append("h6").text(`${key.toUpperCase()}: ${value}`);
+
+  })})};
+
+function deckListMakerSeven() {
+  let deckListSeven = []
+  var deckSeven = d3.select("#deckListSeven")
+  deckSeven.html("")
+  d3.json("vintage_deck_links.json").then(function (data) {
+    var deckListListSeven = Object.entries(data.combined)
+
+
+    for (const [key,value] of deckListListSeven){
+      const result = cardListSeven.every(val => value.includes(val));
+      if (result == true) {
+        deckListSeven.push(key)
+        ;}
+    }
+    console.log(deckListSeven)
+
+
+    Object.entries(deckListSeven).forEach(([key, value]) => {
+      deckSeven.append("h6").text(`${key.toUpperCase()}: ${value}`);
+
+  })})};
